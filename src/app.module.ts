@@ -24,8 +24,10 @@ import { SolicitacoesModule } from './auth/solicitacoes/solicitacoes.module';
         migrationsRun: true,
       }),
     }),
-    AuthModule, SolicitacoesModule],
+    AuthModule,
+    SolicitacoesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

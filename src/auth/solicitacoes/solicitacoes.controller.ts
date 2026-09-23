@@ -1,22 +1,32 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
-  Body,
+  Query,
+  Req,
+  UseGuards,
 } from '@nestjs/common';
-import { CriarSolicitacaoDto } from './dto/criar-solicitacao.dto';
-import { SolicitacoesService } from './solicitacoes.service';
-import { Patch, UseGuards } from '@nestjs/common';
+
 import { Roles } from '../decorators/roles.decorator';
 import { JwtAuthGuard } from '../guards/jwt-auth.guard';
 import { RolesGuard } from '../guards/roles.guard';
-import { Papel } from '../../usuarios/usuario.service';
+import { AprovarSolicitacao } from './dto/aprovar-solicitacao.dto';
+import { CriarSolicitacaoDto } from './dto/criar-solicitacao.dto';
+import { SolicitacoesService } from './solicitacoes.service';
+import { FiltrarSolicitacaoDto } from './dto/filtrar-solicitacoes.dto';
+
+type RequisitosAutenticados = {
+  user: { id: number; papel: string };
+};
 
 @Controller('solicitacoes')
 export class SolicitacoesController {
   constructor(private readonly service: SolicitacoesService) {}
+
   @UseGuards(JwtAuthGuard)
   @Post()
   criar(@Body() dto: CriarSolicitacaoDto) {
@@ -25,8 +35,8 @@ export class SolicitacoesController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  listar() {
-    return this.service.listar();
+  listar(@Query() filtros: FiltrarSolicitacaoDto) {
+    return this.service.listar(filtros);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -38,7 +48,11 @@ export class SolicitacoesController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('gestor')
   @Patch(':id/aprovar')
-  aprovar(@Param('id', ParseIntPipe) id: number) {
-    return this.service.aprovar(id);
+  aprovar(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: AprovarSolicitacao,
+    @Req() request: RequisitosAutenticados,
+  ) {
+    return this.service.aprovar(id, dto.versao, request.user.id);
   }
 }

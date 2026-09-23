@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { Papel } from '../../usuarios/usuario.service';
+import type { Papel } from '../../usuarios/usuario.service';
 import { ROLES_KEY } from '../decorators/roles.decorator';
 
 type RequisicaoComUsuario = {

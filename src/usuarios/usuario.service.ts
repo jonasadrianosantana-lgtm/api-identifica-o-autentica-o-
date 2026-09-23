@@ -10,7 +10,9 @@ export type Usuario = {
   papel: Papel;
   ativo: boolean;
 };
+
 export type UsuarioAutenticado = Omit<Usuario, 'senhaHash'>;
+
 @Injectable()
 export class UsuariosService {
   private readonly usuarios: Usuario[] = [

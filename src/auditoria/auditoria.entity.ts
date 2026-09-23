@@ -3,7 +3,6 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({ name: 'auditorias' })
@@ -24,7 +23,7 @@ export class Auditoria {
   recursoId!: number;
 
   @Column({ type: 'jsonb', nullable: true })
-  detalhes!: Record<string, unknown>;
+  detalhes!: Record<string, unknown> | null;
 
   @CreateDateColumn({ name: 'criado_em', type: 'timestamp' })
   criadoEm!: Date;
