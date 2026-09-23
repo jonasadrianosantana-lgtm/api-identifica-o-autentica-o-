@@ -4,7 +4,7 @@ import { Solicitacao } from './solicitacao.entity';
 import { AuthModule } from '../auth.module';
 import { SolicitacoesController } from './solicitacoes.controller';
 import { SolicitacoesService } from './solicitacoes.service';
-import { Auditoria } from 'src/auditoria/auditoria.entity';
+import { Auditoria } from 'src/auth/auditoria/auditoria.entity';
 @Module({
   imports: [AuthModule, TypeOrmModule.forFeature([Solicitacao, Auditoria])],
   controllers: [SolicitacoesController],

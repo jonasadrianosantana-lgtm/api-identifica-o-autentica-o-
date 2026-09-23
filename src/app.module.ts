@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { SolicitacoesModule } from './auth/solicitacoes/solicitacoes.module';
-
+import { AuditoriaModule } from './auth/auditoria/auditoria.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -26,6 +26,7 @@ import { SolicitacoesModule } from './auth/solicitacoes/solicitacoes.module';
     }),
     AuthModule,
     SolicitacoesModule,
+    AuditoriaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

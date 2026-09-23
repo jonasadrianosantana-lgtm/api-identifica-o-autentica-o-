@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { DataSource } from 'typeorm';
-import { Auditoria } from '../auditoria/auditoria.entity';
+import { Auditoria } from '../auth/auditoria/auditoria.entity';
 import { Solicitacao } from '../auth/solicitacoes/solicitacao.entity';
 
 export default new DataSource({

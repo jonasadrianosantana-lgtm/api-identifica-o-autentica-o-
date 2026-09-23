@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import dataSource from '../data-source';
-import { Solicitacao } from 'src/auth/solicitacoes/solicitacao.entity';
+import { Solicitacao } from '../../auth/solicitacoes/solicitacao.entity';
 const dados = [
   {
     titulo: 'Aquisição de monitor',

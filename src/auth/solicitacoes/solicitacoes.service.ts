@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { CriarSolicitacaoDto } from './dto/criar-solicitacao.dto';
 import { Solicitacao } from './solicitacao.entity';
-import { Auditoria } from 'src/auditoria/auditoria.entity';
+import { Auditoria } from 'src/auth/auditoria/auditoria.entity';
 import { FindOptionsWhere } from 'typeorm';
 import { FiltrarSolicitacaoDto } from './dto/filtrar-solicitacoes.dto';
 @Injectable()
